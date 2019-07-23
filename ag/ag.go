@@ -1,8 +1,9 @@
 package ag
 
 import (
-	"github.com/bingoohuang/gou/str"
 	"time"
+
+	"github.com/bingoohuang/gou/str"
 
 	"github.com/bingoohuang/now"
 	"github.com/gin-gonic/gin"
