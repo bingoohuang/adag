@@ -3,6 +3,7 @@ module github.com/bingoohuang/adag
 go 1.12
 
 require (
+	github.com/bingoohuang/cmd v1.0.5
 	github.com/bingoohuang/gonet v0.0.0-20190716021716-fd516efe8b31
 	github.com/bingoohuang/gou v0.0.0-20190724014721-0bd59a7f74d8
 	github.com/bingoohuang/now v0.0.0-20190715150822-ba8e4a91e3d9

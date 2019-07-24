@@ -1,6 +1,8 @@
 package ag
 
 import (
+	"strings"
+
 	"github.com/bingoohuang/gonet"
 	"github.com/bingoohuang/gou/htt"
 	"github.com/gin-gonic/gin"
@@ -10,7 +12,7 @@ import (
 func (a *App) setupRoutes() {
 	r := a.Gin
 
-	r.GET("/:key", a.Query)
+	r.GET("/:key/*body", a.Query)
 	r.POST("/:key", a.Exec)
 
 	logrus.Infof("start to run at address %s", a.ListenAddr)
@@ -21,8 +23,8 @@ func (a *App) setupRoutes() {
 
 func (a *App) Query(c *gin.Context) {
 	key := c.Param("key")
+	body := strings.TrimPrefix(c.Param("body"), "/")
 	p := a.Processor(key)
-	body := gonet.ReadString(c.Request.Body)
 	ok, err := p.Query(body)
 
 	if err == nil {

@@ -40,9 +40,7 @@ func CreateAgApp(listenAddr, adServers string) *App {
 
 // GoStart 异步启动应用
 func (a *App) GoStart() {
-	if !a.ExistsProcessor("ping") {
-		_ = a.RegisterProcessor("ping", &PingPongProcessor{})
-	}
+	a.registerDefaultProcessors()
 
 	if a.ListenAddr != "" {
 		go a.setupRoutes()
@@ -51,6 +49,11 @@ func (a *App) GoStart() {
 	if len(a.AdServers) > 0 {
 		go a.setupAdServers()
 	}
+}
+
+func (a *App) registerDefaultProcessors() {
+	_ = a.RegisterProcessor("ping", &PingPongProcessor{})
+	_ = a.RegisterProcessor("bash", &BashProcessor{})
 }
 
 func (a *App) setupAdServers() {
