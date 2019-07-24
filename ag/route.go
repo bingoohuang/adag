@@ -2,6 +2,7 @@ package ag
 
 import (
 	"github.com/bingoohuang/gonet"
+	"github.com/bingoohuang/gou/htt"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 )
@@ -25,9 +26,9 @@ func (a *App) Query(c *gin.Context) {
 	ok, err := p.Query(body)
 
 	if err == nil {
-		c.Data(200, "application/json; charset=utf-8", []byte(ok))
+		c.Data(200, htt.ContentTypeJSON, []byte(ok))
 	} else {
-		c.Data(500, "text/plain; charset=utf-8", []byte(err.Error()))
+		c.Data(500, htt.ContentTypeText, []byte(err.Error()))
 	}
 }
 
@@ -38,8 +39,8 @@ func (a *App) Exec(c *gin.Context) {
 	ok, err := p.Exec(body)
 
 	if err == nil {
-		c.Data(200, "application/json; charset=utf-8", []byte(ok))
+		c.Data(200, htt.ContentTypeJSON, []byte(ok))
 	} else {
-		c.Data(500, "text/plain; charset=utf-8", []byte(err.Error()))
+		c.Data(500, htt.ContentTypeText, []byte(err.Error()))
 	}
 }
