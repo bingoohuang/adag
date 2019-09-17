@@ -16,6 +16,6 @@ func (s BashProcessor) Query(body string) (ok string, err error) {
 	return strings.Join(result.Stdout, "\n"), result.Error
 }
 
-func (s BashProcessor) Exec(body string) (ok string, err error) {
+func (s BashProcessor) Exec(query string, body string) (ok string, err error) {
 	return s.Query(body)
 }
