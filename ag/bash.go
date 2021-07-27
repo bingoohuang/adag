@@ -4,7 +4,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bingoohuang/cmd"
+	"github.com/gobars/cmd"
 )
 
 // BashProcessor bash执行处理器
